@@ -226,20 +226,23 @@ figure;
 Cp_2=reshape(C_grid(2,:,:),n_grid,n_grid);
 Cp_7=reshape(C_grid(7,:,:),n_grid,n_grid);
 Cp_22=reshape(C_grid(22,:,:),n_grid,n_grid);
-axCp2=subplot(2,6,[1,2]); % value map after 2 trials
-axCp7=subplot(2,6,[3,4]); % value map after 7 trials
-axCp22=subplot(2,6,[5,6]); % value map after 22 trials
+axCp2=subplot(3,3,1); % value map after 2 trials
+axCp7=subplot(3,3,2); % value map after 7 trials
+axCp22=subplot(3,3,3); % value map after 22 trials
 surf(axCp2,Cp_2);
 surf(axCp7,Cp_7);
 surf(axCp22,Cp_22);
-zmax=max([max(max(max(C_grid(2,:,:)))),max(max(max(C_grid(7,:,:)))),max(max(max(C_grid(22,:,:))))]);
-%zlim(axCp2,[-Inf zmax]);
-%zlim(axCp7,[-Inf zmax]);
-%zlim(axCp22,[-Inf zmax]);
+%zmax=max([max(max(max(C_grid(2,:,:)))),max(max(max(C_grid(7,:,:)))),max(max(max(C_grid(22,:,:))))]);
+axis(axCp2,[0 25 0 25 -Inf 1]);
+axis(axCp7,[0 25 0 25 -Inf 1]);
+axis(axCp22,[0 25 0 25 -Inf 1]);
+%zlim(axCp2,[-Inf 1]);
+%zlim(axCp7,[-Inf 1]);
+%zlim(axCp22,[-Inf 1]);
 
-axpa2=subplot(2,6,7); % preferred action map after 2 trials
-axpa7=subplot(2,6,9); % preferred action map after 7 trials
-axpa22=subplot(2,6,11); % preferred action map after 22 trials
+axpa2=subplot(3,3,4); % preferred action map after 2 trials
+axpa7=subplot(3,3,5); % preferred action map after 7 trials
+axpa22=subplot(3,3,6); % preferred action map after 22 trials
 plot(axpa2,pool_x,pool_y,'linewidth',2);
 plot(axpa7,pool_x,pool_y,'linewidth',2);
 plot(axpa22,pool_x,pool_y,'linewidth',2);
@@ -258,9 +261,9 @@ plot(axpa22,platform_x,platform_y,'b-','linewidth',2);
 contour(axpa2,x_grid,y_grid,Cp_2); % commented out because no contour yet which gives error
 contour(axpa7,x_grid,y_grid,Cp_7);
 contour(axpa22,x_grid,y_grid,Cp_22);
-scatter(axpa2,xi,yi,abs(w_trial(:,2))*1000);
-scatter(axpa7,xi,yi,abs(w_trial(:,7))*1000);
-scatter(axpa22,xi,yi,abs(w_trial(:,22))*1000);
+%scatter(axpa2,xi,yi,abs(w_trial(:,2))*1000);
+%scatter(axpa7,xi,yi,abs(w_trial(:,7))*1000);
+%scatter(axpa22,xi,yi,abs(w_trial(:,22))*1000);
 %quiver(axpa2,x_grid,y_grid,DX_2,DY_2);
 %quiver(axpa7,x_grid,y_grid,DX_7,DY_7);
 %quiver(axpa22,x_grid,y_grid,DX_22,DY_22);
@@ -274,9 +277,9 @@ axis(axpa2,[-1 1 -1 1]);
 axis(axpa7,[-1 1 -1 1]);
 axis(axpa22,[-1 1 -1 1]);
 
-axpath2=subplot(2,6,8); % path the rat takes in 2nd trial
-axpath7=subplot(2,6,10); % path the rat takes in 7th trial
-axpath22=subplot(2,6,12); % path the rat takes in 22th trial
+axpath2=subplot(3,3,7); % path the rat takes in 2nd trial
+axpath7=subplot(3,3,8); % path the rat takes in 7th trial
+axpath22=subplot(3,3,9); % path the rat takes in 22th trial
 plot(axpath2,pool_x,pool_y,'linewidth',2);
 plot(axpath7,pool_x,pool_y,'linewidth',2);
 plot(axpath22,pool_x,pool_y,'linewidth',2);
